@@ -1,16 +1,106 @@
-# This is a sample Python script.
+import random
+import math
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def dodawanie(a,b):
+    print(f"wynik: {a+b}")
+def odejmowanie(a,b):
+    print(f"wynik: {a-b}")
+def mnozenie(a,b):
+    print(f"wynik: {a*b}")
+def dzielenie(a,b):
+    if b==0:
+        print("nie dzielimy przez 0")
+    else:
+       print(f"wynik: {a / b}")
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi , {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+
+    #zad1
+    print(type(1 + 2))
+    print(type(1 + 4.5))
+    print(type(1 / 2))
+    print(type(4 / 2))
+    print(type(3 // 2))
+    print(type(-3 // 2))
+    print(type(11 % 2))
+    print(type(2 ** 10))
+    print(type(8 ** (1 /3)))
+
+    #zad2
+
+    # ////////////////////////////////////////////////////////////////////////////////////////
+    #zad 3 + 5
+    x = 5
+    print(x)
+    print("x", x)
+    y = input("podaj licze: ")
+    z = int(input("podaj liczbę: "))
+    c = x + int(y) + z
+    print(f"suma: {c}")
+    # ////////////////////////////////////////////////////////////////////////////////////////
+    #zad 4 + 4.1 + 5
+    los = random.randint(-2, 5)
+    cenaPaliwa = 6.5
+
+    odcinekDrogi=los     #float(input("Podaj Odcinek drogi w km: "))
+    litryBezyny=1/100
+    print("przebyta droga: ", los,"km")
+    print(f"cena paliwa: {(odcinekDrogi*litryBezyny)*cenaPaliwa} zł")
+    print(f"zużycie paliwa: {(odcinekDrogi * litryBezyny)} l")
+    #////////////////////////////////////////////////////////////////////////////////////////
+    # zad dodatkowe 1
+    print("zadanie dodatkowe 1. 0=ax+b")
+    x = random.randint(-2, 5)
+    a = int(input("podaj liczbę A: "))
+    b = int(input("podaj liczbę B: "))
+    y=a*x+b
+    print(f"wynik: {y}")
+    # zad dodatkowe 2
+    print("zadanie dodatkowe 2. pole trujkąta A,B,C")
+    a = int(input("podaj liczbę A: "))
+    b = int(input("podaj liczbę B: "))
+    c = int(input("podaj liczbę C: "))
+    p = ((a+b+c)/2)
+    pole=math.sqrt(p*(p-a)*(p-b)*(p-c))
+    print(f"wynik pola to: {pole}")
+    # ////////////////////////////////////////////////////////////////////////////////////////
+    # zad dodatkowe 3
+    print("zadanie dodatkowe 3. kalkulator")
+    odp=0
+    while (odp!=5):
+      print("1. dodawanie")
+      print("2. odejmowanie")
+      print("3. mnożenie")
+      print("4. dzielenie")
+      print("5. koniec")
+      odp=int(input("podaj opcje: " ))
+      if (odp==1):
+          print("Dodawanie: ")
+          a=int(input("A: "))
+          print("dodac: ")
+          b=int(input("B: "))
+          dodawanie(a,b)
+      elif (odp==2):
+          print("odejmowanie: ")
+          a=int(input("A: "))
+          print("odjac: ")
+          b=int(input("B: "))
+          odejmowanie(a, b)
+      elif (odp == 3):
+          print("mnozenie: ")
+          a=int(input("A: "))
+          print("pomnozyc przez: ")
+          b=int(input("B: "))
+          mnozenie(a, b)
+      elif (odp == 4):
+          print("dzielenie: ")
+          a=int(input("A: "))
+          print("podzielic przez: ")
+          b=int(input("B: "))
+          dzielenie(a, b)
+
+      elif (odp !=0):
+          print("Niema takiej opcji ")
+
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
