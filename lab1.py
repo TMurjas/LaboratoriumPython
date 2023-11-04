@@ -45,8 +45,8 @@ if __name__ == '__main__':
     # ////////////////////////////////////////////////////////////////////////////////////////
     # zad 3 + 5
     print("Podaj długość boków prostokąta")
-    a = int(input("A: "))
-    b = int(input("B: "))
+    a = 5
+    b = 10
     # c = int(input("C: "))
     print(f"pole prostokąta wynosi:{a * b}")
     5
