@@ -44,11 +44,40 @@ if __name__ == '__main__':
             print(space+star)
             space = " "
 
-     elif zadanie == 5:
+    elif zadanie == 5:
          n = int(input("długosć ciągu N: "))
          a = int(input("pierwszy wyraz ciagu: "))
          r = int(input("roznica ciągu: "))
 
          for i in range(n):
+             print(a+i*r)
+
+    elif zadanie == 6:
+         s = int(input("podaj kolejnosc silni: "))
+         wynik=1
+         for i in range(1,s+1):
+             wynik*=i
+
+         print(f"silnia {s}! = ",wynik)
+
+    elif zadanie == 7:
+         pass
+
+    elif zadanie == 8:
+         pass
+
+    elif zadanie == 8:
+         tekst = "Rzeszów jest piękny"
+         print(tekst[0])
+         #print(tekst[6], tekst[9], tekst[12], tekst[1])
+         print(tekst[6:14:3])
+        print(tekst[-2])
+    elif zadanie == 9:
+         tekst = "Python jest super"
+         print(tekst[0])
+         print(tekst[6], tekst[9], tekst[12], tekst[1])
+
+        #2-3 - lancuchy
+        #3-6 - for
 
 
