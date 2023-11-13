@@ -37,8 +37,8 @@ if __name__ == '__main__':
           if liczba>0:
               break
           else:
-            print("Podałes złą liczbe spróbuj ponownie.")
+            print("Podałes zla liczbe sprobuj ponownie.")
 
-      print(f"twoja dodatnia liczba to{liczba}")
+      print(f"twoja dodatnia liczba to {liczba}")
 
 
