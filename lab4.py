@@ -4,7 +4,7 @@
 
 if __name__ == '__main__':
 
-    zad=1
+    zad=4
     if zad == 1:
       lista=["Tomek","Romek","Arek","Mirek"]
       lista=sorted(lista)
@@ -13,8 +13,57 @@ if __name__ == '__main__':
       lista.append("Ola")
       zmienna=lista.pop()
       print(zmienna)
-      lista.insert(3, "aga")
+      lista.insert(2, "Aga")
+      print(lista)
+      lista = sorted(lista)
+      lista.reverse()
+      lista*=2
       print(lista)
 
     if zad==2:
-        pass
+        tekst = "Rzeszów_jest_piękny"
+        print(tekst)
+        print(tekst[0])
+        # print(tekst[6], tekst[9], tekst[12], tekst[1])
+        print(tekst[6:14:3]+tekst[1])
+    if zad==3:
+        tekst = "Python jest super"
+        print(tekst[0])
+        print(tekst[-1])
+        print(tekst[::2])
+        print(tekst[1::3])
+        print(tekst[10:])
+        print(tekst[::-1])
+    if zad == 4:
+        imie = input("podaj imie: ")
+        nazwisko = input("podaj nazwisko: ")
+        print("Witaj ", imie, nazwisko)
+        wiek = input("podaj wiek: ")
+
+        while (not wiek.isdigit() ):
+            print("zle podany wiek sprobuj ponownie")
+            wiek = input("podaj wiek: ")
+            if wiek.isdigit():
+                wiek=int(wiek)
+                if (wiek <= 0)or(wiek>200):
+                    wiek="non"
+                    continue
+                else:
+                    break
+
+        print(f"Twój wiek to: {wiek}")
+        print("Twoje inicłay to: ", imie[0].upper() +"."+ nazwisko[0].upper()+".")
+
+        str = input("podaj łancuch który wyswietle 5 razy: ")
+        str*=5
+        print(str)
+
+
+        str_1 = input("podaj łancuch 1: ")
+        str_2 = input("podaj łancuch 2: ")
+        str_3 = str_1 + " " + str_2
+        print(f"twoj łancuch po połonczeniu to{str_3}")
+        x = len(str_1) // 2
+        y = len(str_2) // 2
+        str4 = str_1[:x] + " " + str_2[y:]
+        print(f"poł1 i poł 2 łancucha to: {str4}")
