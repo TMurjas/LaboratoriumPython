@@ -4,7 +4,7 @@ import random
 
 if __name__ == '__main__':
 
-    zad=11
+    zad=12
 ##############################################
     if zad == 1:
       lista=["Tomek","Romek","Arek","Mirek"]
@@ -135,7 +135,7 @@ if __name__ == '__main__':
     elif zad == 11:
         n=" "
         while(not n.isdigit()):
-          n=input("podaj n elemetow tablicy")
+          n=input("podaj n elemetow tablicy ")
 
         n = int(n)
         x = " "
@@ -146,22 +146,22 @@ if __name__ == '__main__':
         list=[""]*n
         for i in range(n):
             for j in range(random.randint(1,x)):
-              list[i]+=chr(random.randint(65,90))
+              list[i]+=chr(random.randint(65,91))
               znaki+=1
-        print(list)
-        print(znaki)
+        print("lista to",list)
+        print("ilosc znaków w liscie",znaki)
         znaki = 0
 
         for i in range(len(list)):
             znaki += len(list[i])
-        print(znaki)
+        print("ilosc znaków w liscie sposub 2",znaki)
         znakiK = 0
         for i in range(len(list)):
             for j in list[i]:
                 if j=="K":
                     znakiK += 1
 
-        print(znakiK)
+        print("ilosc K w liscie",znakiK)
 
         znakiK = 0
         for i in range(len(list)):
@@ -169,11 +169,54 @@ if __name__ == '__main__':
                 if j=="KT":
                     znakiK += 1
 
-        print(znakiK)
+        print("ilosc KT w liscie",znakiK)
 
+        s = " "
+        while (not s.isdigit()):
+            s = input("podaj n elemetow tablicy ")
+        s = int(s)
 
+        znakiK = 0
 
+        for i in range(len(list)):
+            if len(list[i])>s:
+                znakiK += 1
+        print("ilosc elemętów w liscie wiekszych od S",znakiK)
 
+        for i in range(len(list)):
+            str="a"+list[i]+"z"
+            list[i]=str
+
+        print("lista po dodaniu a i z",list)
+
+    elif zad == 12:
+        lista=[]
+        for i in range(65,91):
+            lista.append(chr(i))
+
+        print(lista)
+        x=""
+        while (not x.isdigit()):
+          x = input("podaj n elemęty tablicy ")
+        else:x = int(x)
+
+        num=len(lista)//x
+        res = len(lista) % x
+        newlista=[]
+        str=""
+        for i in range(num):
+            for j in range(x):
+                str+=lista.pop(0)
+            newlista.append(str)
+            str = ""
+        str = ""
+        if res>0:
+          for i in range(res):
+              str+=lista.pop(0)
+          newlista.append(str)
+          str = ""
+        print(lista)
+        print(newlista)
 
 
 
