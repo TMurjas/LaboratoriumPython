@@ -1,10 +1,10 @@
-
+import random
 
 
 
 if __name__ == '__main__':
 
-    zad=10
+    zad=11
 ##############################################
     if zad == 1:
       lista=["Tomek","Romek","Arek","Mirek"]
@@ -133,6 +133,47 @@ if __name__ == '__main__':
             print("nie")
 ##############################################
     elif zad == 11:
+        n=" "
+        while(not n.isdigit()):
+          n=input("podaj n elemetow tablicy")
+
+        n = int(n)
+        x = " "
+        while (not x.isdigit()):
+          x = input("podaj x elemetow w tablicy ")
+        x = int(x)
+        znaki=0
+        list=[""]*n
+        for i in range(n):
+            for j in range(random.randint(1,x)):
+              list[i]+=chr(random.randint(65,90))
+              znaki+=1
+        print(list)
+        print(znaki)
+        znaki = 0
+
+        for i in range(len(list)):
+            znaki += len(list[i])
+        print(znaki)
+        znakiK = 0
+        for i in range(len(list)):
+            for j in list[i]:
+                if j=="K":
+                    znakiK += 1
+
+        print(znakiK)
+
+        znakiK = 0
+        for i in range(len(list)):
+            for j in list[i]:
+                if j=="KT":
+                    znakiK += 1
+
+        print(znakiK)
+
+
+
+
 
 
 
