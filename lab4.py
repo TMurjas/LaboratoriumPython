@@ -4,7 +4,7 @@ import random
 
 if __name__ == '__main__':
 
-    zad=15
+    zad=16
 ##############################################
     if zad == 1:
       lista=["Tomek","Romek","Arek","Mirek"]
@@ -281,26 +281,129 @@ if __name__ == '__main__':
         for i in zakupy:
           cena+=zakupy[i]
         print("cena wszystkich zakupow to: ",cena,"zł")
+        ostatnirah=0
 
     elif zad == 15:
         prad={"luty":100,"kwiecien":120,"czerwiec":300,"sierpien":200,"pazdziernik":50,"grudzień":500}
         srednia=0
         max=0
         min=prad["luty"]
-        print(min)
         for i in prad:
           srednia+=prad[i]
-
+          ostatnirah=prad[i]
           if max<prad[i]:
             max=prad[i]
           if min>prad[i]:
             min=prad[i]
+
+        print("ostatni rachunek sposub 1 ",ostatnirah)
+        ostatnirah = 0
+        str=list(prad.keys())
+        str=str[len(str)-1]
+        ostatnirah = prad[str]
+        print("ostatni rachunek sposub 2 ", ostatnirah)
 
         print("suma rachunków to ", srednia)
         print("najwiekszy rachunek to ", max)
         print("najmiejszy rachunek to ", min)
         srednia=(srednia//len(prad))
         print("srednia rachunków to ", srednia)
+
+        if ostatnirah>srednia:
+            print("zacznij oszczedzac!")
+        elif ostatnirah<=srednia:
+            print("Jesteś bezpieczny")
+        else:
+            print("coś poszło nie tak")
+
+    elif zad == 16:
+        zbiurX = set()
+        zbiurY = set()
+
+        for i in range(random.randint(3, 8)):
+            zbiurX.add(random.randint(0, 10))
+        for i in range(random.randint(3, 8)):
+            zbiurY.add(random.randint(0, 10))
+
+        print("Zbiór X: ",zbiurX)
+        print("Zbiór Y: ", zbiurY)
+
+        if 5 in zbiurX:
+            print("w zbiorze X zawiera się liczba 5")
+        else:
+            print("w zbiorze X nie zawiera się liczba 5")
+
+        sumX = zbiurX-zbiurY
+        sumY = zbiurY - zbiurX
+        if len(sumX)==0:
+            print("Zbiór X jest podzbiorem Y")
+        else:
+            print("Zbiór X nie jest podzbiorem Y")
+
+        if len(sumY) == 0:
+            print("Zbiór Y jest podzbiorem X")
+        else:
+            print("Zbiór y nie jest podzbiorem X")
+
+        if len(sumX) == 0:
+            if sumX!=sumY:
+                print("Zbiór Y jest nadzbiorem X")
+            else:
+                print("Zbiór X i Y są sobie równe ")
+        else:
+            print("Zbiór Y nie jest nadzbiorem X")
+
+        if len(sumY) == 0:
+            if sumX!=sumY:
+                print("Zbiór X jest nadzbiorem Y")
+            else:
+                print("Zbiór X i Y są sobie równe ")
+        else:
+            print("Zbiór X nie jest nadzbiorem Y")
+
+        print("suma zbioru X i Y: ", zbiurX|zbiurY)
+        print("różnica zbioru X - Y: ", zbiurX - zbiurY)
+        print("różnica zbioru Y - X: ", zbiurY - zbiurX)
+        print("iloczyn zbioru Y i X: ", zbiurX & zbiurY)
+        print("iloczyn zbioru Y i X: ", zbiurX ^ zbiurY)
+        print("różnica zbioru Y - X: ", zbiurY)
+
+        maxX=0
+        for i in zbiurX:
+            maxX=i
+        print("najwiekszy elemęt w zbiorze X to: ",maxX)
+
+        maxY=0
+        for i in zbiurY:
+            maxY=i
+        print("najwiekszy elemęt w zbiorze Y to: ",maxY)
+
+
+        for i in zbiurX:
+            PierwszaWZbiorzeX = i
+            break
+        print("Pierwsza liczba w zbiorzeX to: ",PierwszaWZbiorzeX)
+        zbiurX.discard(PierwszaWZbiorzeX)
+        print("bez Pierwszej liczba w zbiorze X to: ", zbiurX)
+        zbiurY.add(PierwszaWZbiorzeX)
+        print("dodanie Pierwszej liczba z zbiorze X do Zbioru Y to: ", zbiurY)
+
+        zbiurY|=zbiurX
+        print("dodanie wszystkich elemętów zbioru X do zbioru Y: ", zbiurY)
+        zbiurX.clear()
+        print("Czyszczenie zbioru X: ", zbiurX)
+        zbiurY.clear()
+        print("Czyszczenie zbioru Y: ", zbiurY)
+
+
+
+
+
+
+
+
+
+
 
 
 
