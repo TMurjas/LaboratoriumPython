@@ -432,6 +432,7 @@ if __name__ == '__main__':
         coinSpr="*"
         coinX = [0, 2, 2, 3]
         coinY = [1, 3, 4, 4]
+        coinState = [0,0,0,0]
 
 
 
