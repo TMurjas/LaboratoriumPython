@@ -110,10 +110,17 @@ if __name__ == '__main__':
         print(strte)
 ##############################################
     elif zad == 8:
-        #Napisz program, który zamieni w ciągu znaków podanym przez użytkownika każdy
-        #znak, który się powtórzy na @. Zmieniony ciąg znaków wypisze na ekran.
-
-        pass
+        napis=input("podaj ciąg znaków: ")
+        napis=list(napis)
+        baza=set()
+        string=""
+        for i in range(len(napis)):
+                if napis[i] in baza:
+                    napis[i] = "@"
+                else:
+                    baza.add(napis[i])
+                string+=napis[i]
+        print(string)
 ##############################################
     elif zad == 9:
         zdanie = input("podaj zdanie: ")
