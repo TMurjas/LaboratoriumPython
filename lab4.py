@@ -4,7 +4,7 @@ import random
 
 if __name__ == '__main__':
 
-    zad=12
+    zad=13
 ##############################################
     if zad == 1:
       lista=["Tomek","Romek","Arek","Mirek"]
@@ -217,6 +217,28 @@ if __name__ == '__main__':
           str = ""
         print(lista)
         print(newlista)
+    elif zad == 13:
+        n = " "
+        while (not n.isdigit()):
+            n = input("podaj n elemetow tablicy ")
+
+        n = int(n)
+        x = " "
+        while (not x.isdigit()):
+            x = input("podaj x elemetow w tablicy ")
+        x = int(x)
+        znaki = 0
+        list = [""] * n
+        for i in range(n):
+            for j in range(random.randint(1, x)):
+                list[i] += chr(random.randint(65, 91))
+                znaki += 1
+        krot=tuple(list)
+        print("typ to",type( krot))
+
+        print("krotka to", krot)
+
+
 
 
 
