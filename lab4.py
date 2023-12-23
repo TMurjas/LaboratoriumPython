@@ -4,7 +4,7 @@ import random
 
 if __name__ == '__main__':
 
-    zad=13
+    zad=15
 ##############################################
     if zad == 1:
       lista=["Tomek","Romek","Arek","Mirek"]
@@ -112,6 +112,9 @@ if __name__ == '__main__':
         print(strte)
 ##############################################
     elif zad == 8:
+        #Napisz program, który zamieni w ciągu znaków podanym przez użytkownika każdy
+        #znak, który się powtórzy na @. Zmieniony ciąg znaków wypisze na ekran.
+
         pass
 ##############################################
     elif zad == 9:
@@ -189,7 +192,7 @@ if __name__ == '__main__':
 
         print("lista po dodaniu a i z",list)
 
-    elif zad == 12:
+    elif zad == 8:
         lista=[]
         for i in range(65,91):
             lista.append(chr(i))
@@ -218,6 +221,7 @@ if __name__ == '__main__':
         print(lista)
         print(newlista)
     elif zad == 13:
+
         n = " "
         while (not n.isdigit()):
             n = input("podaj n elemetow tablicy ")
@@ -235,9 +239,68 @@ if __name__ == '__main__':
                 znaki += 1
         krot=tuple(list)
         print("typ to",type( krot))
-
+        print("ilosc znaków w krotce sposub 1", znaki)
+        znaki = 0
         print("krotka to", krot)
 
+        for i in range(len(krot)):
+            znaki += len(krot[i])
+        print("ilosc znaków w krotce sposub 2",znaki)
+        znakiK = 0
+        for i in range(len(krot)):
+            for j in krot[i]:
+                if j=="K":
+                    znakiK += 1
+
+        print("ilosc K w krotce",znakiK)
+
+        znakiK = 0
+        for i in range(len(krot)):
+            for j in krot[i]:
+                if j=="KT":
+                    znakiK += 1
+
+        print("ilosc KT w krotce",znakiK)
+
+        s = " "
+        while (not s.isdigit()):
+            s = input("podaj n elemetow tablicy ")
+        s = int(s)
+
+        znakiK = 0
+
+        for i in range(len(krot)):
+            if len(krot[i])>s:
+                znakiK += 1
+        print("ilosc elemętów w krotce wiekszych od S",znakiK)
+
+    elif zad == 14:
+        zakupy={"mleko":3,"ser":7,"piwo":4}
+        print(zakupy)
+        cena=0
+        for i in zakupy:
+          cena+=zakupy[i]
+        print("cena wszystkich zakupow to: ",cena,"zł")
+
+    elif zad == 15:
+        prad={"luty":100,"kwiecien":120,"czerwiec":300,"sierpien":200,"pazdziernik":50,"grudzień":500}
+        srednia=0
+        max=0
+        min=prad["luty"]
+        print(min)
+        for i in prad:
+          srednia+=prad[i]
+
+          if max<prad[i]:
+            max=prad[i]
+          if min>prad[i]:
+            min=prad[i]
+
+        print("suma rachunków to ", srednia)
+        print("najwiekszy rachunek to ", max)
+        print("najmiejszy rachunek to ", min)
+        srednia=(srednia//len(prad))
+        print("srednia rachunków to ", srednia)
 
 
 
