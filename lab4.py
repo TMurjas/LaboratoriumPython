@@ -1,10 +1,8 @@
 import random
 
-
-
 if __name__ == '__main__':
 
-    zad=17
+    zad=18
 ##############################################
     if zad == 1:
       lista=["Tomek","Romek","Arek","Mirek"]
@@ -395,8 +393,101 @@ if __name__ == '__main__':
         print("Czyszczenie zbioru X: ", zbiurX)
         zbiurY.clear()
         print("Czyszczenie zbioru Y: ", zbiurY)
-
+##############################################
     elif zad == 17:
+        str=input("podaj 5 liczb rozdzielone przecinkami")
+        strList=str.split(",")
+        liczby=[]
+        for i in range(len(strList)):
+            if strList[i].isdigit():
+                liczby.append(int(strList[i]))
+
+        print(strList)
+        print(liczby)
+        if len(liczby)<=5 and len(liczby)>0 :
+            zbior=set(liczby)
+            liczbaPop=zbior.pop()
+            print(liczbaPop)
+
+            if liczbaPop==max(liczby):
+                print("Wylosowałeś największa liczbę w zbiorze")
+                if liczbaPop==min(liczby):
+                  print("i zarazem najmniejszą więc podałeś tylko 1 liczbę spryciażu")
+            elif liczbaPop==min(liczby):
+                print("Wylosowałeś najmniejszą liczbę w zbiorze")
+            else:
+                print("nic szczególnego nie wylosowałeś")
+        else:
+            print("Podałeś za dużo lub nie podałeś żadnej liczby")
+##############################################
+    elif zad == 18:
+        playerSpr="o"
+        playerX=0
+        playerY=0
+
+        enemySpr="X"
+        enemyX=[0, 2, 2, 3]
+        enemyY=[1, 3, 4, 4]
+
+        coinSpr="*"
+        coinX = [0, 2, 2, 3]
+        coinY = [1, 3, 4, 4]
+
+
+
+
+        enemySpr="x"
+        land=[[",",",","=",",",",",",",","],
+              [",",",","=",",",",",",",","],
+              [",",",","|",",",",",",",","],
+              [",",",","=",",",",",",",","],
+              [",",",","=",",",",",",",","],
+              [",",",","=",",",",",",",","]]
+
+
+        while (True):
+          land =   [[",", ",", "=", ",", ",", ",", ","],
+                    [",", ",", "|", ",", ",", ",", ","],
+                    [",", ",", "=", ",", ",", ",", ","],
+                    [",", ",", "=", ",", ",", ",", ","],
+                    [",", ",", "|", ",", ",", ",", ","],
+                    [",", ",", "=", ",", ",", ",", ","]]
+          land[enemyX[0]][enemyY[0]] = enemySpr
+          land[enemyX[1]][enemyY[1]] = enemySpr
+          land[enemyX[2]][enemyY[2]] = enemySpr
+          land[enemyX[3]][enemyY[3]] = enemySpr
+
+          land[playerX][playerY] = playerSpr
+          land[playerX][playerY]=playerSpr
+          print(f"[{land[0][0]}][{land[1][0]}][{land[2][0]}][{land[3][0]}][{land[4][0]}][{land[5][0]}]")
+          print(f"[{land[0][1]}][{land[1][1]}][{land[2][1]}][{land[3][1]}][{land[4][1]}][{land[5][1]}]")
+          print(f"[{land[0][2]}][{land[1][2]}][{land[2][2]}][{land[3][2]}][{land[4][2]}][{land[5][2]}]")
+          print(f"[{land[0][3]}][{land[1][3]}][{land[2][3]}][{land[3][3]}][{land[4][3]}][{land[5][3]}]")
+          print(f"[{land[0][4]}][{land[1][4]}][{land[2][4]}][{land[3][4]}][{land[4][4]}][{land[5][4]}]")
+          action=input("type Direction to go up, down, left, right: ")
+
+          if action=="left":
+              if playerX>0:
+                  playerX-=1
+              else:
+                  print("you hit the endge of the map")
+          elif action=="right":
+              if playerX < 5:
+                playerX += 1
+              else:
+                print("you hit the endge of the map")
+          elif action == "up":
+              if playerY > 0:
+                  playerY -= 1
+              else:
+                  print("you hit the endge of the map")
+          elif action == "down":
+              if playerY <4:
+                  playerY += 1
+              else:
+                  print("you hit the endge of the map")
+
+
 
 
 
