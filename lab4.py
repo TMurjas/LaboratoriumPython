@@ -424,16 +424,34 @@ if __name__ == '__main__':
         playerSpr="o"
         playerX=0
         playerY=0
+        playerLives=3
+        playerWeapon="None"
+        playerGold = 0
+
+        weaponX=0
+        weaponY=4
+        weaponSpr="!"
+        WeaponState=0
+
+        exitX=5
+        exitY=0
+        exitState=0
+        exitSpr=["Q","O"]
+
+        gameWin=0
 
         enemySpr="X"
         enemyX=[0, 2, 2, 3]
         enemyY=[1, 3, 4, 4]
+        enemyState=[0,0,0,0]
 
         coinSpr="*"
         coinX = [1, 2, 3, 5]
         coinY = [1, 0, 3, 3]
         coinState = [0,0,0,0]
-        gold=0
+
+
+
 
 
 
@@ -441,23 +459,32 @@ if __name__ == '__main__':
         enemySpr="x"
         land=[[",",",","=",",",",",",",","],
               [",",",","=",",",",",",",","],
-              [",",",","|",",",",",",",","],
+              [",",",","I",",",",",",",","],
               [",",",","=",",",",",",",","],
-              [",",",","=",",",",",",",","],
+              [",",",","I",",",",",",",","],
               [",",",","=",",",",",",",","]]
 
 
         while (True):
-          land =   [[",", ",", "=", ",", ",", ",", ","],
-                    [",", ",", "|", ",", ",", ",", ","],
+          land =   [[",", ",","=", ",", ",", ",", ","],
+                    [",", ",", "H", ",", ",", ",", ","],
                     [",", ",", "=", ",", ",", ",", ","],
                     [",", ",", "=", ",", ",", ",", ","],
-                    [",", ",", "|", ",", ",", ",", ","],
+                    [",", ",", "H", ",", ",", ",", ","],
                     [",", ",", "=", ",", ",", ",", ","]]
-          land[enemyX[0]][enemyY[0]] = enemySpr
-          land[enemyX[1]][enemyY[1]] = enemySpr
-          land[enemyX[2]][enemyY[2]] = enemySpr
-          land[enemyX[3]][enemyY[3]] = enemySpr
+          if enemyState[0]==0:
+            land[enemyX[0]][enemyY[0]] = enemySpr
+          if enemyState[1] == 0:
+            land[enemyX[1]][enemyY[1]] = enemySpr
+          if enemyState[2] == 0:
+            land[enemyX[2]][enemyY[2]] = enemySpr
+          if enemyState[3] == 0:
+            land[enemyX[3]][enemyY[3]] = enemySpr
+
+          if WeaponState == 0:
+            land[weaponX][weaponY] = weaponSpr
+
+          land[exitX][exitY] = exitSpr[exitState]
 
           if coinState[0]==0:
             land[coinX[0]][coinY[0]] = coinSpr
@@ -465,7 +492,7 @@ if __name__ == '__main__':
             land[coinX[1]][coinY[1]] = coinSpr
           if coinState[2] == 0:
             land[coinX[2]][coinY[2]] = coinSpr
-          if coinState[0] == 0:
+          if coinState[3] == 0:
             land[coinX[3]][coinY[3]] = coinSpr
 
           land[playerX][playerY] = playerSpr
@@ -475,18 +502,58 @@ if __name__ == '__main__':
           print(f"[{land[0][2]}][{land[1][2]}][{land[2][2]}][{land[3][2]}][{land[4][2]}][{land[5][2]}]")
           print(f"[{land[0][3]}][{land[1][3]}][{land[2][3]}][{land[3][3]}][{land[4][3]}][{land[5][3]}]")
           print(f"[{land[0][4]}][{land[1][4]}][{land[2][4]}][{land[3][4]}][{land[4][4]}][{land[5][4]}]")
-          print(f"Gold: {gold}g")
+          print(f"Lives: {playerLives} Gold: {playerGold}g Weapon: {playerWeapon}")
+              #print("CONGRATULATION!!! You Win!!!")
+              #break
+          if gameWin == 1:
+            print("CONGRATULATION!!! You Win!!!")
+            break
+
           action=input("type Direction to go up, down, left, right: ")
 
+          #####################################################
           if action=="left":
               if playerX>0:
                   playerX-=1
                   if land[playerX][playerY] == "=":
                       playerX += 1
                       print("water is blocking your path")
+                  if land[playerX][playerY] == "x":
+                      if playerWeapon == "None":
+                          if playerLives > 0:
+                              playerLives -= 1
+                              playerX = 0
+                              playerY = 0
+                              print("You Died")
+                          else:
+                              print("You're Dead, Game Over!")
+                              break
+                      else:
+                          for i in range(len(enemyState)):
+                              if playerX == enemyX[i] and playerY == enemyY[i]:
+                                  enemyState[i] = 1
+
+                  if land[playerX][playerY] == "*":
+                      for i in range(len(coinState)):
+                          if playerX==coinX[i] and playerY==coinY[i]:
+                              coinState[i]=1
+                              playerGold+=1
+                  if land[playerX][playerY] == "!":
+                      if WeaponState==0:
+                        playerWeapon="Sword"
+                        WeaponState=1
+
+                  if land[playerX][playerY] == "Q":
+                      print("give me 4 gold to pass")
+
+                  if land[playerX][playerY] == "O":
+                      print("You may pass!")
+                      playerGold=0
+                      gameWin=1
 
               else:
                   print("you hit the endge of the map")
+          #####################################################
           elif action=="right":
               if playerX < 5:
                 playerX += 1
@@ -494,26 +561,129 @@ if __name__ == '__main__':
                     playerX -= 1
                     print("water is blocking your path")
 
+                if land[playerX][playerY] == "x":
+                    if playerWeapon == "None":
+                      if playerLives > 0:
+                            playerLives -= 1
+                            playerX = 0
+                            playerY = 0
+                            print("You Died")
+                      else:
+                          print("You're Dead, Game Over!")
+                          break
+                    else :
+                      for i in range(len(enemyState)):
+                        if playerX == enemyX[i] and playerY == enemyY[i]:
+                            enemyState[i] = 1
 
 
+
+                if land[playerX][playerY] == "*":
+                    for i in range(len(coinState)):
+                        if playerX == coinX[i] and playerY == coinY[i]:
+                            coinState[i] = 1
+                            playerGold += 1
+
+                if land[playerX][playerY] == "!":
+                    if WeaponState == 0:
+                        playerWeapon = "Sword"
+                        WeaponState = 1
+
+                if land[playerX][playerY] == "Q":
+                    print("give me 4 gold to pass")
+
+                if land[playerX][playerY] == "O":
+                    print("You may pass!")
+                    playerGold = 0
+                    gameWin = 1
               else:
                 print("you hit the endge of the map")
+          #####################################################
           elif action == "up":
               if playerY > 0:
                   playerY -= 1
                   if land[playerX][playerY] == "=":
                       playerY += 1
                       print("water is blocking your path")
+
+                  if land[playerX][playerY] == "x":
+                      if playerWeapon == "None":
+                          if playerLives > 0:
+                              playerLives -= 1
+                              playerX = 0
+                              playerY = 0
+                              print("You Died")
+                          else:
+                              print("You're Dead, Game Over!")
+                              break
+                      else:
+                          for i in range(len(enemyState)):
+                              if playerX == enemyX[i] and playerY == enemyY[i]:
+                                  enemyState[i] = 1
+
+                  if land[playerX][playerY] == "*":
+                      for i in range(len(coinState)):
+                          if playerX==coinX[i] and playerY==coinY[i]:
+                              coinState[i]=1
+                              playerGold+=1
+                  if land[playerX][playerY] == "!":
+                      if WeaponState==0:
+                        playerWeapon="Sword"
+                        WeaponState=1
+
+                  if land[playerX][playerY] == "Q":
+                      print("give me 4 gold to pass")
+
+                  if land[playerX][playerY] == "O":
+                      print("You may pass!")
+                      playerGold = 0
+                      gameWin = 1
               else:
                   print("you hit the endge of the map")
+          #####################################################
           elif action == "down":
               if playerY <4:
                   playerY += 1
                   if land[playerX][playerY] == "=":
                       playerY -= 1
                       print("water is blocking your path")
+
+                  if land[playerX][playerY] == "x":
+                      if playerWeapon == "None":
+                          if playerLives > 0:
+                              playerLives -= 1
+                              playerX = 0
+                              playerY = 0
+                              print("You Died")
+                          else:
+                              print("You're Dead, Game Over!")
+                              break
+                      else:
+                          for i in range(len(enemyState)):
+                              if playerX == enemyX[i] and playerY == enemyY[i]:
+                                  enemyState[i] = 1
+
+                  if land[playerX][playerY] == "*":
+                      for i in range(len(coinState)):
+                          if playerX==coinX[i] and playerY==coinY[i]:
+                              coinState[i]=1
+                              playerGold+=1
+
+                  if land[playerX][playerY] == "Q":
+                      print("give me 4 gold to pass")
+
+                  if land[playerX][playerY] == "O":
+                      print("You may pass!")
+                      playerGold = 0
+                      gameWin = 1
               else:
                   print("you hit the endge of the map")
+              #####################################################
+          if exitState == 0:
+            if playerGold >= 4:
+              exitState=1
+
+
 
 
 
