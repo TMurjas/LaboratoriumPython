@@ -430,9 +430,10 @@ if __name__ == '__main__':
         enemyY=[1, 3, 4, 4]
 
         coinSpr="*"
-        coinX = [0, 2, 2, 3]
-        coinY = [1, 3, 4, 4]
+        coinX = [1, 2, 3, 5]
+        coinY = [1, 0, 3, 3]
         coinState = [0,0,0,0]
+        gold=0
 
 
 
@@ -458,6 +459,15 @@ if __name__ == '__main__':
           land[enemyX[2]][enemyY[2]] = enemySpr
           land[enemyX[3]][enemyY[3]] = enemySpr
 
+          if coinState[0]==0:
+            land[coinX[0]][coinY[0]] = coinSpr
+          if coinState[1] == 0:
+            land[coinX[1]][coinY[1]] = coinSpr
+          if coinState[2] == 0:
+            land[coinX[2]][coinY[2]] = coinSpr
+          if coinState[0] == 0:
+            land[coinX[3]][coinY[3]] = coinSpr
+
           land[playerX][playerY] = playerSpr
           land[playerX][playerY]=playerSpr
           print(f"[{land[0][0]}][{land[1][0]}][{land[2][0]}][{land[3][0]}][{land[4][0]}][{land[5][0]}]")
@@ -465,26 +475,43 @@ if __name__ == '__main__':
           print(f"[{land[0][2]}][{land[1][2]}][{land[2][2]}][{land[3][2]}][{land[4][2]}][{land[5][2]}]")
           print(f"[{land[0][3]}][{land[1][3]}][{land[2][3]}][{land[3][3]}][{land[4][3]}][{land[5][3]}]")
           print(f"[{land[0][4]}][{land[1][4]}][{land[2][4]}][{land[3][4]}][{land[4][4]}][{land[5][4]}]")
+          print(f"Gold: {gold}g")
           action=input("type Direction to go up, down, left, right: ")
 
           if action=="left":
               if playerX>0:
                   playerX-=1
+                  if land[playerX][playerY] == "=":
+                      playerX += 1
+                      print("water is blocking your path")
+
               else:
                   print("you hit the endge of the map")
           elif action=="right":
               if playerX < 5:
                 playerX += 1
+                if land[playerX][playerY]=="=":
+                    playerX -= 1
+                    print("water is blocking your path")
+
+
+
               else:
                 print("you hit the endge of the map")
           elif action == "up":
               if playerY > 0:
                   playerY -= 1
+                  if land[playerX][playerY] == "=":
+                      playerY += 1
+                      print("water is blocking your path")
               else:
                   print("you hit the endge of the map")
           elif action == "down":
               if playerY <4:
                   playerY += 1
+                  if land[playerX][playerY] == "=":
+                      playerY -= 1
+                      print("water is blocking your path")
               else:
                   print("you hit the endge of the map")
 
