@@ -4,7 +4,7 @@ import random
 
 if __name__ == '__main__':
 
-    zad=16
+    zad=17
 ##############################################
     if zad == 1:
       lista=["Tomek","Romek","Arek","Mirek"]
@@ -21,14 +21,14 @@ if __name__ == '__main__':
       lista*=2
       print(lista)
 ##############################################
-    elif zad==2:
+    elif zad == 2:
         tekst = "Rzeszów_jest_piękny"
         print(tekst)
         print(tekst[0])
         # print(tekst[6], tekst[9], tekst[12], tekst[1])
         print(tekst[6:14:3]+tekst[1])
 ##############################################
-    elif zad==3:
+    elif zad == 3:
         tekst = "Python jest super"
         print(tekst[0])
         print(tekst[-1])
@@ -191,8 +191,8 @@ if __name__ == '__main__':
             list[i]=str
 
         print("lista po dodaniu a i z",list)
-
-    elif zad == 8:
+##############################################
+    elif zad == 12:
         lista=[]
         for i in range(65,91):
             lista.append(chr(i))
@@ -220,6 +220,7 @@ if __name__ == '__main__':
           str = ""
         print(lista)
         print(newlista)
+##############################################
     elif zad == 13:
 
         n = " "
@@ -273,7 +274,7 @@ if __name__ == '__main__':
             if len(krot[i])>s:
                 znakiK += 1
         print("ilosc elemętów w krotce wiekszych od S",znakiK)
-
+##############################################
     elif zad == 14:
         zakupy={"mleko":3,"ser":7,"piwo":4}
         print(zakupy)
@@ -282,7 +283,7 @@ if __name__ == '__main__':
           cena+=zakupy[i]
         print("cena wszystkich zakupow to: ",cena,"zł")
         ostatnirah=0
-
+##############################################
     elif zad == 15:
         prad={"luty":100,"kwiecien":120,"czerwiec":300,"sierpien":200,"pazdziernik":50,"grudzień":500}
         srednia=0
@@ -315,7 +316,7 @@ if __name__ == '__main__':
             print("Jesteś bezpieczny")
         else:
             print("coś poszło nie tak")
-
+##############################################
     elif zad == 16:
         zbiurX = set()
         zbiurY = set()
@@ -394,6 +395,8 @@ if __name__ == '__main__':
         print("Czyszczenie zbioru X: ", zbiurX)
         zbiurY.clear()
         print("Czyszczenie zbioru Y: ", zbiurY)
+
+    elif zad == 17:
 
 
 
