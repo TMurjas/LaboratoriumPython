@@ -1,5 +1,5 @@
 
-zad=11
+zad=16
 
 if zad==1:
   def poleKola(r):
@@ -141,6 +141,73 @@ elif zad == 11:
     print(zmien(5,6,10,7))
 
 
+elif zad == 12:
+    def rowKwa(a,b,c):
+        delta=(b**2)-(4*a*c)
+        print (delta)
+        pierdelta=(delta**0.5)
+        print(pierdelta)
+        if delta<0:
+            print("Delta niema rozwiazania")
+            return ( )
+        elif delta == 0:
+            if a!=0:
+              return (-b/(2*a))
+            else:
+              print("A nie może być 0")
+              return ( )
+        elif delta > 0:
+            if a!=0:
+              return ((-b-(pierdelta))/(a*2),(-b+(pierdelta))/(2*a))
+            else:
+              print("A nie może być 0")
+              return ( )
+
+
+    abc=rowKwa(1, 6, 5)
+    print(abc)
+
+elif zad == 13:
+    def strCount(str):
+        low=0
+        upp=0
+        el=0
+        for i in range(len(str)):
+          if str[i].islower():
+              low+=1
+          elif str[i].isupper():
+              upp+=1
+          else :
+              el+=1
+
+        return {"lower":low, "Upper":upp, "Rest":el}
+
+
+    print(strCount(input("napisz coś ")))
+
+elif zad == 14:
+    def wspolne(list1,list2):
+        new_list=[]
+        for i in range(len(list1)):
+            for j in range(len(list2)):
+                if list1[i]==list2[j]:
+                    new_list.append(list2[j])
+        return(new_list)
+
+
+    print(wspolne(["a","abc","c",1,5],["abc",1,6,"c","cda"]))
+
+elif zad == 15:
+    def nwd(a, b):
+      if b > 0:
+        return nwd(b, a % b)
+      else:
+        return a
+
+
+    print(nwd(5,6))
+
+elif zad == 15:
 
 
 
