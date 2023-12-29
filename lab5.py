@@ -1,5 +1,5 @@
 
-zad=16
+zad=17
 
 if zad==1:
   def poleKola(r):
@@ -207,7 +207,42 @@ elif zad == 15:
 
     print(nwd(5,6))
 
-elif zad == 15:
+elif zad == 16:
+    def palindrom(zdanie):
+        if zdanie==zdanie[::-1]:
+            return "tak"
+
+        else:
+            return "nie"
+
+    print(palindrom(input("podaj zdanie: ")))
+
+elif zad == 17:
+    def anagramami(zdanie1,zdanie2):
+        zdanie1=zdanie1.lower()
+        zdanie2=zdanie2.lower()
+        zd1 = [*zdanie1]
+        zd2 = [*zdanie2]
+        zd1.sort()
+        zd2.sort()
+
+        if len(zd1)!=len(zd2):
+            return "Nie"
+
+        for i in range(len(zd1)):
+            if zd1!=zd2:
+                break;
+                return "nie"
+
+        return "tak"
+
+
+    print(anagramami("AAbbc", "cbbaa"))
+
+
+
+
+
 
 
 
